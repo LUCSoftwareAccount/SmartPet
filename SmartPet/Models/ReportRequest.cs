@@ -7,10 +7,10 @@ namespace SmartPet.Models
 {
     public class ReportRequest
     {
-		public int Id { get; set; }
-		public int PetId { get; set; }
-		public string ReportType { get; set; }
-		public string Status { get; set; }
-		public string GeneratedUrl { get; set; }
+		public int id { get; set; }
+		public int petId { get; set; }
+		public string reportType { get; set; }
+		public string status { get; set; }
+		public string generatedUrl { get; set; }
 	}
 }

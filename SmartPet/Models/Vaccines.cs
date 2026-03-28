@@ -7,11 +7,11 @@ namespace SmartPet.Models
 {
     public class Vaccines
     {
-        public int Id { get; set; }
-		public int PetId { get; set; }
-		public string Name { get; set; }
-		public DateTime AdministeredOn { get; set; }
-		public DateTime NextDueOn { get; set; }
-		public string VetName { get; set; }
+        public int id { get; set; }
+		public int petId { get; set; }
+		public string name { get; set; }
+		public DateTime administeredOn { get; set; }
+		public DateTime nextDueOn { get; set; }
+		public string vetName { get; set; }
 	}
 }
