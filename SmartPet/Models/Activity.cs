@@ -8,9 +8,10 @@ namespace SmartPet.Models
 {
     public class Activity
     {
-		public int ActivityId { get; set; } // Primary Key
-		public string ActivityType { get; set; } // Type of activity (e.g., Walk, Play, Feed)
-		public DateTime ActivityDate { get; set; } // Date and time of the activity
-		public int PetId { get; set; } // Foreign key to Pet
+		public int id { get; set; } // Primary Key
+		public bool completed { get; set; } // Type of activity (e.g., Walk, Play, Feed)
+		public DateTime activityDate { get; set; } // Date and time of the activity
+		public int petId { get; set; } // Foreign key to Pet
+		public DateTime createdAT { get; set; } // When activity was created
 	}
 }
