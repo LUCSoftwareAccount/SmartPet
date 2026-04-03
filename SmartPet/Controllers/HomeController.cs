@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SmartPet.Models;
 
 namespace SmartPet.Controllers
 {
@@ -10,10 +12,14 @@ namespace SmartPet.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
+			var db = new SmartPetDbContext();
+			var count = db.Users.Count();
 
-        public ActionResult About()
+			ViewBag.UserCount = count;
+			return View();
+        }
+		
+		public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 

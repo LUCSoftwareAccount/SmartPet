@@ -7,12 +7,12 @@ namespace SmartPet.Models
 {
 	public class Pet
 	{
-		public int Id { get; set; }
-		public int UserId { get; set; }
-		public string Name { get; set; }
-		public string Type { get; set; }
+		public int id { get; set; }
+		public int userId { get; set; }
+		public string name { get; set; }
+		public string type { get; set; }
 		public DateTime? Birthdate { get; set; }
-		public string MicrochipId { get; set; }
-		public string PhotoUrl { get; set; }
+		public string microchipId { get; set; }
+		public string photoUrl { get; set; } 
 	}
-}
+} 
