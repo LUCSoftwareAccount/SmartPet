@@ -12,6 +12,6 @@ namespace SmartPet.Models
 		public bool completed { get; set; } // Type of activity (e.g., Walk, Play, Feed)
 		public DateTime activityDate { get; set; } // Date and time of the activity
 		public int petId { get; set; } // Foreign key to Pet
-		public DateTime createdAT { get; set; } // When activity was created
+		public DateTime createdAt { get; set; } // When activity was created
 	}
 }
