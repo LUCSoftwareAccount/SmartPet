@@ -12,6 +12,13 @@ namespace SmartPet.Repositories
 	{
 		private readonly SmartPetDbContext _context;
 
+		// add this
+		public UserRepository()
+		{
+			_context = new SmartPetDbContext();
+		}
+
+		// keep this too
 		public UserRepository(SmartPetDbContext context)
 		{
 			_context = context;

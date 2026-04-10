@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<link rel="stylesheet" href="~/css/Login.css" />
+
+<div class="login-page">
+	<div class="login-container fade-in">
+
+		<img src="~/images/petnote-logo-new.png"
+			 alt="Petnote Logo"
+			 class="logo" />
+
+		<h1 class="login-title">Login to Petnote</h1>
+		<p class="login-subtitle">Welcome back!</p>
+
+		@if (ViewBag.Error != null)
+		{
+		<p class="error-message">@ViewBag.Error</p>
+		}
+
+		<form asp-controller="Account" asp-action="Login" method="post" class="login-form">
+			@Html.AntiForgeryToken()
+
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email"
+					   id="email"
+					   name="Email"
+					   class="form-input"
+					   placeholder="Enter your email"
+					   required />
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password"
+					   id="password"
+					   name="Password"
+					   class="form-input"
+					   placeholder="Enter your password"
+					   required />
+			</div>
+
+			<button type="submit" class="login-btn">Login</button>
+		</form>
+
+		<p class="register-text">
+			Don’t have an account?
+			<a asp-controller="User" asp-action="Register" class="register-link">Register here</a>
+		</p>
+	</div>
+</div>

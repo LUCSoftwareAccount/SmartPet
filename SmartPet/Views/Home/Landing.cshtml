@@ -2,41 +2,34 @@
 	ViewData["Title"] = "Landing";
 }
 
+<<<<<<< HEAD
 <!-- Link your stylesheet -->
+<link rel="stylesheet" href=" \css\Landing.css" />
+=======
 <link rel="stylesheet" href="~/css/Landing.css" />
+>>>>>>> bc5c7db (updates to login and registration)
 
 <div class="body-container">
 	<div class="content fade-in">
 
-		<!-- Logo -->
 		<img src="~/images/petnote-logo-new.png"
 			 alt="Petnote Logo"
 			 class="logo" />
 
-		<!-- Title -->
 		<h1 class="title">Welcome to Petnote!</h1>
-
-		<!-- Subtitle -->
 		<p class="subtitle">We're so glad you're here.</p>
 
-		<!-- Buttons -->
 		<div class="button-group">
-			<a asp-controller="Account"
-			   asp-action="Login"
-			   class="login-btn">
-				Login
+			<a @Html.ActionLink("Login", "Login", "User", null, new { @class = "login-btn" }) 
+		
 			</a>
 
-			<a asp-controller="Account"
-			   asp-action="Register"
-			   class="register-btn">
-				Register
-			</a>
-		</div>
-
+			<a @Html.ActionLink("Register", "Registration", "User", null, new { @class = "register-btn" })
+				
+				</a>
+</div>
 	</div>
 
-	<!-- Running dog animation -->
 	<img src="~/images/running-dog.gif"
 		 alt="Running Dog"
 		 class="running-dog" />
