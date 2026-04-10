@@ -1,34 +1,38 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Data.Entity;
 using SmartPet.Models;
+using SmartPet.Repositories;
 
 namespace SmartPet.Controllers
 {
 	public class PetController : Controller
 	{
-		private SmartPetDbContext db = new SmartPetDbContext();
+		private readonly IPetRepository _petRepository;
+
+		public PetController()
+		{
+			_petRepository = new PetRepository(new SmartPetDbContext());
+		}
 
 		// GET: Pet
-		public ActionResult Index()
+		public async Task<ActionResult> Index()
 		{
-			return View(db.Pets.ToList());
+			var pets = await _petRepository.GetAllPetsAsync();
+			return View(pets);
 		}
 
 		// GET: Pet/Details/5
-		public ActionResult Details(int? id)
+		public async Task<ActionResult> Details(int? id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-
-			Pet pet = db.Pets.Find(id);
-
+			var pet = await _petRepository.GetPetByIdAsync(id.Value);
 			if (pet == null)
 			{
-				return HttpNotFound();
+				return HttpNotFound(); 
 			}
 
 			return View(pet);
@@ -43,12 +47,11 @@ namespace SmartPet.Controllers
 		// POST: Pet/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(Pet pet)
+		public async Task<ActionResult> Create(Pet pet)
 		{
 			if (ModelState.IsValid)
 			{
-				db.Pets.Add(pet);
-				db.SaveChanges();
+				await _petRepository.AddPetAsync(pet);
 				return RedirectToAction("Index");
 			}
 
@@ -56,15 +59,13 @@ namespace SmartPet.Controllers
 		}
 
 		// GET: Pet/Edit/5
-		public ActionResult Edit(int? id)
+		public async Task<ActionResult> Edit(int? id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-
-			Pet pet = db.Pets.Find(id);
-
+			var pet = await _petRepository.GetPetByIdAsync(id.Value);
 			if (pet == null)
 			{
 				return HttpNotFound();
@@ -76,12 +77,16 @@ namespace SmartPet.Controllers
 		// POST: Pet/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(Pet pet)
+		public async Task<ActionResult> Edit(int id, Pet pet)
 		{
+			if (id != pet.id)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+			}
+
 			if (ModelState.IsValid)
 			{
-				db.Entry(pet).State = EntityState.Modified;
-				db.SaveChanges();
+				await _petRepository.UpdatePetAsync(pet);
 				return RedirectToAction("Index");
 			}
 
@@ -89,15 +94,13 @@ namespace SmartPet.Controllers
 		}
 
 		// GET: Pet/Delete/5
-		public ActionResult Delete(int? id)
+		public async Task<ActionResult> Delete(int? id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-
-			Pet pet = db.Pets.Find(id);
-
+			var pet = await _petRepository.GetPetByIdAsync(id.Value);
 			if (pet == null)
 			{
 				return HttpNotFound();
@@ -109,21 +112,10 @@ namespace SmartPet.Controllers
 		// POST: Pet/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
-		public ActionResult DeleteConfirmed(int id)
+		public async Task<ActionResult> DeleteConfirmed(int id)
 		{
-			Pet pet = db.Pets.Find(id);
-			db.Pets.Remove(pet);
-			db.SaveChanges();
+			await _petRepository.DeletePetAsync(id);
 			return RedirectToAction("Index");
-		}
-
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing)
-			{
-				db.Dispose();
-			}
-			base.Dispose(disposing);
 		}
 	}
 }

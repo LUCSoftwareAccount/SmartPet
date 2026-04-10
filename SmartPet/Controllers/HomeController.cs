@@ -10,12 +10,8 @@ namespace SmartPet.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Landing()
         {
-			var db = new SmartPetDbContext();
-			var count = db.Users.Count();
-
-			ViewBag.UserCount = count;
 			return View();
         }
 		
