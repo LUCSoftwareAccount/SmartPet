@@ -1,0 +1,6 @@
+.vs/
+packages/
+*.user
+*.suo
+SmartPet/bin/
+SmartPet/obj/
