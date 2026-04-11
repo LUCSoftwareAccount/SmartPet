@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\FeedingLogs.cs" />
     <Compile Include="Models\Medication.cs" />
     <Compile Include="Models\MedicationLogs.cs" />
@@ -166,6 +167,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Content Include="css\Landing.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -193,6 +195,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <None Include="Views\User\Login.cshtml" />
+    <None Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
