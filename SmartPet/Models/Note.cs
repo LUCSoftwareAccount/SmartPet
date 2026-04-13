@@ -11,7 +11,7 @@ namespace SmartPet.Models
 		public int petId { get; set; }
 		public string content { get; set; }
 		public DateTime createdAt { get; set; }
-		public DateTime? updatedAt { get; set; }
+		
 
 
 	}

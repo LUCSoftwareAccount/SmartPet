@@ -130,7 +130,7 @@ namespace SmartPet.Controllers
 				return View();
 			}
 
-			return RedirectToAction("Index");
+			return RedirectToAction("Dashboard", "Dashboard");
 		}
 
 		private string GenerateToken()
