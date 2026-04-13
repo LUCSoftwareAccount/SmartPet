@@ -1,0 +1,38 @@
+@model SmartPet.Models.Pet
+
+<h2>Create Pet</h2>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<hr />
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.name)
+			@Html.TextBoxFor(model => model.name, new { @class = "form-control" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.type)
+			@Html.TextBoxFor(model => model.type, new { @class = "form-control" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.microchipId)
+			@Html.TextBoxFor(model => model.microchipId, new { @class = "form-control" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Birthdate)
+			@Html.TextBoxFor(model => model.Birthdate, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control" })
+		</div>
+
+		<br />
+		<input type="submit" value="Create" class="btn btn-primary" />
+	</div>
+}
+
+<br />
+@Html.ActionLink("Back to List", "Index") 

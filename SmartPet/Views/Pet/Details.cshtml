@@ -1,0 +1,17 @@
+@model SmartPet.Models.Pet
+
+<h2>Pet Details</h2>
+
+<div>
+	<hr />
+
+	<p><strong>Name:</strong> @Model.name</p>
+	<p><strong>Type:</strong> @Model.type</p>
+	<p><strong>Microchip:</strong> @Model.microchipId</p>
+	<p><strong>Birthdate:</strong> @(Model.Birthdate?.ToString("yyyy-MM-dd"))</p>
+
+</div>
+
+<br />
+@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+@Html.ActionLink("Back to List", "Index") 

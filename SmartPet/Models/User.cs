@@ -13,6 +13,8 @@ namespace SmartPet.Models
 			public string passwordHash { get; set; }
 			public bool enabled { get; set; }
 			public bool isVerified { get; set; }
+			public String VerificationToken { get; set; }
+		    public DateTime TokenExpires { get; set; }
 		
 	}
 }

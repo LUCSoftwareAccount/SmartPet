@@ -20,7 +20,7 @@ namespace SmartPet.Controllers
 			model.TotalMedicationLogs = db.MedicationLogs.Count();
 
 			model.Pets = db.Pets
-			  .OrderBy(p => p.Name)
+			  .OrderBy(p => p.name)
 			  .ToList();
 
 			model.UpcomingReminders = db.Reminders

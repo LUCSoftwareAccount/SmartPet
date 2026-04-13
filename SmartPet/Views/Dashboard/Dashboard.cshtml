@@ -1,7 +1,7 @@
 ﻿@model SmartPet.Models.DashboardViewModel
 
 @{
-    ViewBag.Title = "Dashboard";
+	ViewBag.Title = "Dashboard";
 }
 
 <style>
@@ -40,6 +40,40 @@
 		.dashboard-header p {
 			color: #6b7280;
 			font-size: 15px;
+		}
+
+	.dashboard-actions {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+
+	.action-button {
+		display: inline-block;
+		text-decoration: none;
+		padding: 10px 16px;
+		border-radius: 10px;
+		font-size: 14px;
+		font-weight: bold;
+		transition: 0.2s ease;
+	}
+
+	.action-button-primary {
+		background-color: #2563eb;
+		color: white;
+	}
+
+		.action-button-primary:hover {
+			background-color: #1d4ed8;
+		}
+
+	.action-button-secondary {
+		background-color: #e0e7ff;
+		color: #1e3a8a;
+	}
+
+		.action-button-secondary:hover {
+			background-color: #c7d2fe;
 		}
 
 	.summary-grid {
@@ -236,6 +270,11 @@
 			<h1>SmartPet Dashboard</h1>
 			<p>View recent health logs, upcoming reminders, and pet records in one place.</p>
 		</div>
+
+		<div class="dashboard-actions">
+			@Html.ActionLink("Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
+			@Html.ActionLink("Add Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
+		</div>
 	</div>
 
 	<div class="summary-grid">
@@ -270,41 +309,41 @@
 
 			@if (Model.RecentVaccines.Any() || Model.RecentNotes.Any() || Model.RecentMedicationLogs.Any())
 			{
-			<div class="item-list">
-				@foreach (var medLog in Model.RecentMedicationLogs)
-				{
-				<div class="item-box">
-					<h4>Medication: @medLog.MedicationName</h4>
-					<p>Amount: @medLog.Amount</p>
-					<span class="tag tag-yellow">@medLog.AdministeredAt.ToString("MMM dd, yyyy h:mm tt")</span>
-				</div>
-				}
+				<div class="item-list">
+					@foreach (var medLog in Model.RecentMedicationLogs)
+					{
+						<div class="item-box">
+							<h4>Medication: @medLog.MedicationName</h4>
+							<p>Amount: @medLog.Amount</p>
+							<span class="tag tag-yellow">@medLog.AdministeredAt.ToString("MMM dd, yyyy h:mm tt")</span>
+						</div>
+					}
 
-				@foreach (var vaccine in Model.RecentVaccines)
-				{
-				<div class="item-box">
-					<h4>Vaccine: @vaccine.name</h4>
-					<p>Vet: @vaccine.vetName</p>
-					<span class="tag tag-green">@vaccine.administeredOn.ToString("MMM dd, yyyy")</span>
-				</div>
-				}
+					@foreach (var vaccine in Model.RecentVaccines)
+					{
+						<div class="item-box">
+							<h4>Vaccine: @vaccine.name</h4>
+							<p>Vet: @vaccine.vetName</p>
+							<span class="tag tag-green">@vaccine.administeredOn.ToString("MMM dd, yyyy")</span>
+						</div>
+					}
 
-				@foreach (var note in Model.RecentNotes)
-				{
-				<div class="item-box">
-					<h4>Pet Note</h4>
-					<p>@note.content</p>
-					<span class="tag tag-blue">@note.createdAt.ToString("MMM dd, yyyy")</span>
+					@foreach (var note in Model.RecentNotes)
+					{
+						<div class="item-box">
+							<h4>Pet Note</h4>
+							<p>@note.content</p>
+							<span class="tag tag-blue">@note.createdAt.ToString("MMM dd, yyyy")</span>
+						</div>
+					}
 				</div>
-				}
-			</div>
 			}
 			else
 			{
-			<div class="empty-box">
-				<h4>No health logs yet</h4>
-				<p>Medication logs, vaccine records, and notes will appear here once users begin entering records.</p>
-			</div>
+				<div class="empty-box">
+					<h4>No health logs yet</h4>
+					<p>Medication logs, vaccine records, and notes will appear here once users begin entering records.</p>
+				</div>
 			}
 		</div>
 
@@ -313,24 +352,32 @@
 
 			@if (Model.UpcomingReminders.Any())
 			{
-			<div class="item-list">
-				@foreach (var reminder in Model.UpcomingReminders)
-				{
-				<div class="item-box">
-					<h4>@reminder.reminderType</h4>
-					<p>@reminder.message</p>
-					<span class="tag tag-purple">@reminder.dueAt.ToString("MMM dd, yyyy h:mm tt")</span>
+				<div class="item-list">
+					@foreach (var reminder in Model.UpcomingReminders)
+					{
+						<div class="item-box">
+							<h4>@reminder.reminderType</h4>
+							<p>@reminder.message</p>
+							<span class="tag tag-purple">@reminder.dueAt.ToString("MMM dd, yyyy h:mm tt")</span>
+						</div>
+					}
 				</div>
-				}
-			</div>
 			}
 			else
 			{
-			<div class="empty-box">
-				<h4>No reminders scheduled</h4>
-				<p>Upcoming reminders will appear here after they are added to the system.</p>
-			</div>
+				<div class="empty-box">
+					<h4>No reminders scheduled</h4>
+					<p>Upcoming reminders will appear here after they are added to the system.</p>
+				</div>
 			}
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom: 25px;">
+		<h2 class="section-title">Quick Actions</h2>
+		<div class="dashboard-actions">
+			@Html.ActionLink("View Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
+			@Html.ActionLink("Create New Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
 		</div>
 	</div>
 
@@ -338,44 +385,44 @@
 
 	@if (Model.Pets.Any())
 	{
-	<div class="pet-grid">
-		@foreach (var pet in Model.Pets)
-		{
-		<div class="pet-card">
-			<div class="pet-header">
-				<div class="pet-avatar">
-					@if (!string.IsNullOrEmpty(pet.PhotoUrl))
-					{
-					<img src="@pet.PhotoUrl" alt="@pet.Name" />
-					}
-					else
-					{
-					<span>🐾</span>
-					}
-				</div>
-				<div>
-					<h3>@pet.Name</h3>
-					<p>@pet.Type</p>
-				</div>
-			</div>
+		<div class="pet-grid">
+			@foreach (var pet in Model.Pets)
+			{
+				<div class="pet-card">
+					<div class="pet-header">
+						<div class="pet-avatar">
+							@if (!string.IsNullOrEmpty(pet.photoUrl))
+							{
+								<img src="@pet.photoUrl" alt="@pet.name" />
+							}
+							else
+							{
+								<span>🐾</span>
+							}
+						</div>
+						<div>
+							<h3>@pet.name</h3>
+							<p>@pet.type</p>
+						</div>
+					</div>
 
-			<ul class="pet-details">
-				<li><strong>Pet ID:</strong> @pet.Id</li>
-				<li><strong>User ID:</strong> @pet.UserId</li>
-				<li><strong>Birthdate:</strong> @(pet.Birthdate.HasValue ? pet.Birthdate.Value.ToString("MMM dd, yyyy") : "Not added")</li>
-				<li><strong>Microchip ID:</strong> @(string.IsNullOrEmpty(pet.MicrochipId) ? "Not added" : pet.MicrochipId)</li>
-			</ul>
+					<ul class="pet-details">
+						<li><strong>Pet ID:</strong> @pet.id</li>
+						<li><strong>User ID:</strong> @pet.userId</li>
+						<li><strong>Birthdate:</strong> @(pet.Birthdate.HasValue ? pet.Birthdate.Value.ToString("MMM dd, yyyy") : "Not added")</li>
+						<li><strong>Microchip ID:</strong> @(string.IsNullOrEmpty(pet.microchipId) ? "Not added" : pet.microchipId)</li>
+					</ul>
+				</div>
+			}
 		</div>
-		}
-	</div>
 	}
 	else
 	{
-	<div class="card">
-		<div class="empty-box">
-			<h4>No pet profiles yet</h4>
-			<p>Pet summaries will appear here once users register pets in the app.</p>
+		<div class="card">
+			<div class="empty-box">
+				<h4>No pet profiles yet</h4>
+				<p>Pet summaries will appear here once users register pets in the app.</p>
+			</div>
 		</div>
-	</div>
 	}
 </div>
