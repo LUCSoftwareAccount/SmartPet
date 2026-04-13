@@ -6,11 +6,11 @@
 	<hr />
 	<p><strong>Content:</strong> @Model.content</p>
 	<p><strong>Created At:</strong> @Model.createdAt.ToString("yyyy-MM-dd HH:mm")</p>
-	<p><strong>Updated At:</strong> @(Model.updatedAt.HasValue ? Model.updatedAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</p>
+	<p><strong>Updated At:</strong> @(Model.updateAt.HasValue ? Model.updateAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</p>
 </div>
 
 <br />
 
 @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-@Html.ActionLink("Back to List", "Index", new { petId = Model.petId })
+@Html.ActionLink("Back to List", "Index", new { petId = Model.petId }) 
 

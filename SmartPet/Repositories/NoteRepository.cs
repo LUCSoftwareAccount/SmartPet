@@ -43,7 +43,7 @@ namespace SmartPet.Repositories
 		public async Task UpdateNoteAsync(Note note)
 		{
 			_context.Entry(note).State = EntityState.Modified;
-			note.updatedAt = System.DateTime.Now;
+			note.updateAt = System.DateTime.Now;
 			await _context.SaveChangesAsync();
 		}
 

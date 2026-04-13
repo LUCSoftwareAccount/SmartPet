@@ -19,12 +19,12 @@
 		<tr>
 			<td>@item.content</td>
 			<td>@item.createdAt.ToString("yyyy-MM-dd HH:mm")</td>
-			<td>@(item.updatedAt.HasValue ? item.updatedAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
+			<td>@(item.updateAt.HasValue ? item.updateAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
 			<td>
 				@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
 				@Html.ActionLink("Details", "Details", new { id = item.id }) |
 				@Html.ActionLink("Delete", "Delete", new { id = item.id }) |
-				@Html.ActionLink("Notes", "Index", "Note", new { petId = item.id }, null)
+				
 			</td>
 		</tr>
 	}
