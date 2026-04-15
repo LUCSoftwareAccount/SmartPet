@@ -105,7 +105,7 @@ namespace SmartPet.Controllers
 			if (ModelState.IsValid)
 			{
 				await _noteRepository.UpdateNoteAsync(note);
-				return RedirectToAction("Index", new { petId = note.petId });
+				return RedirectToAction("Dashboard", "Dashboard");
 			}
 
 			return View(note);
@@ -140,7 +140,7 @@ namespace SmartPet.Controllers
 			int petId = note.petId;
 			await _noteRepository.DeleteNoteAsync(id);
 
-			return RedirectToAction("Index", new { petId = petId });
+			return RedirectToAction("Dashboard", "Dashboard");
 		}
 	}
 }

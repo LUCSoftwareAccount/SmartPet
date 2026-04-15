@@ -378,7 +378,7 @@
 		<div class="dashboard-actions">
 			@Html.ActionLink("View Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
 			@Html.ActionLink("Create New Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
-			@Html.ActionLink("Create Notes", "Create", "Notes", null, new { @class = "action-button action-button-secondary" })
+		    @Html.ActionLink("Add Pet", "Create", "Pet", null, new { @class = "action-button action-button-secondary" })
 		</div>
 	</div>
 
@@ -404,14 +404,22 @@
 						<div>
 							<h3>@pet.name</h3>
 							<p>@pet.type</p>
+	          
 						</div>
+					</div>
+					<div style="margin-top: 12px;">
+						@Html.ActionLink("Details", "Details", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Edit", "Edit", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
+						@Html.ActionLink("Delete", "Delete", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
+						@Html.ActionLink("Notes", "Index", "Note", new { petId = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
 					</div>
 
 					<ul class="pet-details">
-						<li><strong>Pet ID:</strong> @pet.id</li>
-						<li><strong>User ID:</strong> @pet.userId</li>
-						<li><strong>Birthdate:</strong> @(pet.Birthdate.HasValue ? pet.Birthdate.Value.ToString("MMM dd, yyyy") : "Not added")</li>
-						<li><strong>Microchip ID:</strong> @(string.IsNullOrEmpty(pet.microchipId) ? "Not added" : pet.microchipId)</li>
+						<li><strong>Breed:</strong> @pet.breed</li>
+						<li><strong>Gender:</strong> @pet.gender</li>
+						<li><strong>Weight:</strong> @pet.weight</li>
+						<li><strong>Birthdate:</strong> @(pet.Birthdate.HasValue ? pet.Birthdate.Value.ToString("MMM dd, yyyy") : "")</li>
+						<li><strong>Microchip ID:</strong> @pet.microchipId</li>
 					</ul>
 				</div>
 			}

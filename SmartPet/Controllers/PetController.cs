@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using SmartPet.Models;
@@ -49,14 +50,22 @@ namespace SmartPet.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Create(Pet pet)
 		{
+			if (Session["UserId"] == null)
+			{
+				return RedirectToAction("Login", "User");
+			}
+
+			pet.userId = Convert.ToInt32(Session["UserId"]);
+
 			if (ModelState.IsValid)
 			{
 				await _petRepository.AddPetAsync(pet);
-				return RedirectToAction("Index");
+				return RedirectToAction("Dashboard", "Dashboard");
 			}
 
 			return View(pet);
 		}
+
 
 		// GET: Pet/Edit/5
 		public async Task<ActionResult> Edit(int? id)
@@ -87,7 +96,7 @@ namespace SmartPet.Controllers
 			if (ModelState.IsValid)
 			{
 				await _petRepository.UpdatePetAsync(pet);
-				return RedirectToAction("Index");
+				return RedirectToAction("Dashboard", "Dashboard");
 			}
 
 			return View(pet);
@@ -115,7 +124,7 @@ namespace SmartPet.Controllers
 		public async Task<ActionResult> DeleteConfirmed(int id)
 		{
 			await _petRepository.DeletePetAsync(id);
-			return RedirectToAction("Index");
+			return RedirectToAction("Dashboard", "Dashboard"); 
 		}
 	}
 }

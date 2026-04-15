@@ -14,5 +14,8 @@ namespace SmartPet.Models
 		public DateTime? Birthdate { get; set; }
 		public string microchipId { get; set; }
 		public string photoUrl { get; set; } 
+		public string breed { get; set; }
+		public string gender { get; set; }
+		public double? weight { get; set; } 
 	}
 } 
