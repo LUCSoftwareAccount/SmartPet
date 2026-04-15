@@ -129,6 +129,7 @@ namespace SmartPet.Controllers
 				ViewBag.Error = "Please verify your email first.";
 				return View();
 			}
+			Session["UserId"] = user.id; 
 
 			return RedirectToAction("Dashboard", "Dashboard");
 		}
