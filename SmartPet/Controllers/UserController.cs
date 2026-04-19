@@ -255,20 +255,6 @@ namespace SmartPet.Controllers
 
 			return Content("Email verified successfully! You can now log in.");
 		}
-
-		// POST: User/Logout
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Logout()
-		{
-			// Clear the session to log out the user
-			Session.Clear(); // Or Session["UserId"] = null;
-
-			// Optionally, you can also abandon the session entirely
-			// Session.Abandon();
-
-			// Redirect the user to the login page or home page after logging out
-			return RedirectToAction("Login", "User");
-		}
+		
 	}
 }
