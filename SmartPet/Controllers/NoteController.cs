@@ -142,5 +142,10 @@ namespace SmartPet.Controllers
 
 			return RedirectToAction("Dashboard", "Dashboard");
 		}
+		public NoteController(INoteRepository noteRepository, IPetRepository petRepository)
+		{
+			_noteRepository = noteRepository;
+			_petRepository = petRepository;
+		}
 	}
 }

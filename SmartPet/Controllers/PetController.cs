@@ -126,5 +126,9 @@ namespace SmartPet.Controllers
 			await _petRepository.DeletePetAsync(id);
 			return RedirectToAction("Dashboard", "Dashboard"); 
 		}
+		public PetController(IPetRepository petRepository)
+		{
+			_petRepository = petRepository;
+		}
 	}
 }

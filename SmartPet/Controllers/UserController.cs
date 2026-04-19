@@ -255,5 +255,6 @@ namespace SmartPet.Controllers
 
 			return Content("Email verified successfully! You can now log in.");
 		}
+		
 	}
 }
