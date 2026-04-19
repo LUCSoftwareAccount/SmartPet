@@ -243,11 +243,14 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Content Include="css\Landing.css" />
+    <Content Include="css\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\petnote-logo-new.png" />
     <Content Include="images\running-dog.gif" />
+    <Content Include="images\SmartPet_logo.jpg" />
+    <Content Include="images\SmartPet_logo_transparent.jpg" />
+    <Content Include="images\SmartPet_png.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
