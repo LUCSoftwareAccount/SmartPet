@@ -5,6 +5,18 @@
 }
 
 <style>
+	.pet-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 10px;
+	}
+
+		.pet-actions .action-button {
+			margin: 0;
+			white-space: nowrap;
+		}
+
 	* {
 		box-sizing: border-box;
 		margin: 0;
@@ -261,6 +273,7 @@
 		.pet-grid {
 			grid-template-columns: 1fr;
 		}
+
 	}
 </style>
 
@@ -410,19 +423,20 @@
 						<div>
 							<h3>@pet.name</h3>
 							<p>@pet.type</p>
-	          
+
 						</div>
 					</div>
-					<div style="margin-top: 12px;">
+					
+					<div class="pet-actions">
 						@Html.ActionLink("Details", "Details", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
-						@Html.ActionLink("Edit", "Edit", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
-						@Html.ActionLink("Delete", "Delete", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
-						@Html.ActionLink("Notes", "Index", "Note", new { petId = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
-						@Html.ActionLink("View Medication Logs", "Index", "MedicationLogs", new { petId = pet.id}, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Edit", "Edit", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Delete", "Delete", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Notes", "Index", "Note", new { petId = pet.id }, new { @class = "action-button action-button-secondary" })
+					</div>
 
-
-
-
+					<div class="pet-actions">
+						@Html.ActionLink("View Medication Logs", "Index", "MedicationLogs", new { petId = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Download Medication PDF", "DownloadPdf", "MedicationLogs", new { petId = pet.id }, new { @class = "action-button action-button-secondary" })
 					</div>
 
 					<ul class="pet-details">

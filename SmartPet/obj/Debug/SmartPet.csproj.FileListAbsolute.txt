@@ -110,3 +110,4 @@ C:\Users\cs\source\repos\PetSmart\SmartPet\SmartPet\obj\Debug\SmartPet.csproj.Co
 C:\Users\cs\source\repos\PetSmart\SmartPet\SmartPet\obj\Debug\SmartPet.csproj.Up2Date
 C:\Users\cs\source\repos\PetSmart\SmartPet\SmartPet\obj\Debug\SmartPet.dll
 C:\Users\cs\source\repos\PetSmart\SmartPet\SmartPet\obj\Debug\SmartPet.pdb
+C:\Users\cs\source\repos\PetSmart\SmartPet\SmartPet\bin\Rotativa.dll

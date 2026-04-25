@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SmartPet.Models;
+using Rotativa; 
 
 namespace SmartPet.Controllers
 {
@@ -136,6 +137,25 @@ namespace SmartPet.Controllers
 
 			return View(log);
 		}
+		public ActionResult DownloadPdf(int? petId)
+		{
+			var logs = db.MedicationLogs
+				.Include(m => m.Pet)
+				.AsQueryable();
+
+			if (petId.HasValue)
+			{
+				logs = logs.Where(l => l.petId == petId.Value);
+			}
+
+			logs = logs.OrderByDescending(l => l.administeredAt);
+
+			return new Rotativa.ViewAsPdf("MedicationLogsPdf", logs.ToList())
+			{
+				FileName = "MedicationLogs.pdf"
+			};
+		}
+
 
 	}
 }
