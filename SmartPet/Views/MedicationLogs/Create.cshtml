@@ -1,0 +1,58 @@
+@model SmartPet.Models.MedicationLogs
+
+@{
+	ViewBag.Title = "Log Medication";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Log Medication</h2>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+		<div class="form-group">
+		    @Html.Label("Pet")
+			@Html.DropDownListFor(model => model.petId, (SelectList)ViewBag.petId, "-- Select Pet --", new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.petId, "", new { @class = "text-danger" })
+		</div>
+		<div class="form-group">
+			@Html.Label("Medication", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.TextBoxFor(model => model.medicationName, new { @class = "form-control", placeholder = "Enter medication" })
+				@Html.ValidationMessageFor(model => model.medicationName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.Label("Amount", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.TextBoxFor(model => model.amount, new { @class = "form-control", placeholder = "e.g. 10mg" })
+				@Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.Label("Administered At", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.TextBoxFor(model => model.administeredAt, "{0:yyyy-MM-ddTHH:mm}", new { @class = "form-control", type = "datetime-local" })
+				@Html.ValidationMessageFor(model => model.administeredAt, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Save Log" class="btn btn-success" />
+			</div>
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to Dashboard", "Dashboard", "Dashboard")
+	@Html.ActionLink("View Medication Logs", "Index", "MedicationLogs")
+</div>

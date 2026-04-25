@@ -143,7 +143,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\FeedingLogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedicationLogsController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\PetController.cs" />
     <Compile Include="Controllers\ReminderController.cs" />
@@ -316,6 +318,7 @@
     <Content Include="Views\Reminder\Delete.cshtml" />
     <None Include="Views\User\Login.cshtml" />
     <None Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -330,12 +333,19 @@
     <Content Include="Views\Home\Landing.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Pet\Delete.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
     <Content Include="Views\Pet\Edit.cshtml" />
     <Content Include="Views\Pet\Index.cshtml" />
+    <Content Include="Views\MedicationLogs\Create.cshtml" />
+    <Content Include="Views\MedicationLogs\Index.cshtml" />
+    <Content Include="Views\MedicationLogs\Delete.cshtml" />
+    <Content Include="Views\MedicationLogs\Details.cshtml" />
+    <Content Include="Views\MedicationLogs\Edit.cshtml" />
+    <Content Include="Views\FeedingLogs\Index.cshtml" />
+    <Content Include="Views\FeedingLogs\Create.cshtml" />
+    <Content Include="Views\FeedingLogs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

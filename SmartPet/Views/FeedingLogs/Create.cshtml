@@ -1,0 +1,30 @@
+﻿@model SmartPet.Models.FeedingLogs
+
+<h2>Add Feeding Log</h2>
+
+@using (Html.BeginForm())
+{
+	<div>
+		<label>Brand</label>
+		@Html.TextBoxFor(m => m.brand)
+	</div>
+
+	<div>
+		<label>Food Type</label>
+		@Html.TextBoxFor(m => m.foodType)
+	</div>
+
+	<div>
+		<label>Amount</label>
+		@Html.TextBoxFor(m => m.amount)
+	</div>
+
+	<div>
+		<label>Pet ID</label>
+		@Html.TextBoxFor(m => m.petId)
+	</div>
+
+	<br />
+
+	<button type="submit">Save</button>
+}
