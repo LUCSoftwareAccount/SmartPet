@@ -113,8 +113,11 @@ namespace SmartPet.Controllers
 		// POST: User/Login
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Login(string Email, string Password)
+		public async Task<ActionResult> Login(FormCollection form)
 		{
+			string Email = form["Email"];
+			string Password = form["Password"];
+
 			var users = await _userRepository.GetAllUsersAsync();
 			var user = users.FirstOrDefault(u => u.email == Email);
 
@@ -129,7 +132,9 @@ namespace SmartPet.Controllers
 				ViewBag.Error = "Please verify your email first.";
 				return View();
 			}
-			Session["UserId"] = user.id; 
+
+			Session["UserId"] = user.id;
+			Session["UserEmail"] = user.email;
 
 			return RedirectToAction("Dashboard", "Dashboard");
 		}

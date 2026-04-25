@@ -20,25 +20,23 @@
 		<p>@ViewBag.Error</p>
 	}
 
-	<form asp-controller="User" asp-action="Login" method="post" class="login-form">
-		@Html.AntiForgeryToken()
+    <form action="/User/Login" method="post" class="login-form">
+	    @Html.AntiForgeryToken()
 
-		<label>Email</label>
-		<input type="email"
-			           id="email"
-			           name="Email"
-			           placeholder="Enter your email"
-			           required />
+	    <label>Email</label>
+	    <input type="text"
+		       id="email"
+		       name="Email"
+		       placeholder="Enter your email" />
 
-		<label>Password</label>
-		<input type="password"
-			           id="password"
-			           name="Password"
-			           placeholder="Enter your password"
-			           required />
+	    <label>Password</label>
+	    <input type="password"
+		       id="password"
+		       name="Password"
+		       placeholder="Enter your password" />
 
-		<button type="submit">Login</button>
-	</form>
+	    <button type="submit" class="login-btn">Login</button>
+    </form>
 
 	<p>
 		Don’t have an account?
@@ -46,3 +44,4 @@
 	</p>
 
 </div>
+
