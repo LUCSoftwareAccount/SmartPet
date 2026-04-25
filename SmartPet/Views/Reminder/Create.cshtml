@@ -1,0 +1,34 @@
+﻿@model SmartPet.Models.ReminderViewModel
+
+
+<link rel="stylesheet" href=" /css/Reminder.css" />
+<div class="register-page">
+	<div class="register-container">
+		<h2>Create Reminder</h2>
+
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+
+			@Html.HiddenFor(m => m.PetId)
+
+			<div class="form-group">
+				<label>Reminder Message</label>
+				@Html.TextBoxFor(m => m.Message, new { @class = "form-input" })
+			</div>
+
+			<div class="form-group">
+				<label>Reminder Time</label>
+				@Html.TextBoxFor(m => m.DueAt, new
+				{
+					@class = "form-input",
+					type = "datetime-local"
+				})
+			</div>
+
+			<button type="submit" class="register-btn">
+				Save Reminder
+			</button>
+		}
+	</div>
+</div>
