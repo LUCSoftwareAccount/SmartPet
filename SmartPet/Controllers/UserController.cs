@@ -150,6 +150,13 @@ namespace SmartPet.Controllers
 			}
 			return Convert.ToBase64String(bytes);
 		}
+		// GET: User/Logout
+		public ActionResult Logout()
+		{
+			Session.Clear();
+			Session.Abandon();
+			return RedirectToAction("Login", "User");
+		}
 
 
 		[HttpPost]
