@@ -158,6 +158,7 @@
     <Compile Include="Models\MedicationLogs.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Pet.cs" />
+    <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Models\Reminder.cs" />
     <Compile Include="Models\ReminderViewModel.cs" />
     <Compile Include="Models\ReportRequest.cs" />
@@ -311,6 +312,8 @@
     <Content Include="Views\Note\Edit.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />
     <Content Include="Views\Reminder\Create.cshtml" />
+    <Content Include="Views\Reminder\Edit.cshtml" />
+    <Content Include="Views\Reminder\Delete.cshtml" />
     <None Include="Views\User\Login.cshtml" />
     <None Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Web.config" />

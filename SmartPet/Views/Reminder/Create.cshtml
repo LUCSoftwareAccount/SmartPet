@@ -1,34 +1,33 @@
 ﻿@model SmartPet.Models.ReminderViewModel
 
+@{
+    ViewBag.Title = "Create Reminder";
+}
 
-<link rel="stylesheet" href=" /css/Reminder.css" />
-<div class="register-page">
-	<div class="register-container">
-		<h2>Create Reminder</h2>
+<h2>Create Reminder</h2>
 
-		@using (Html.BeginForm())
-		{
-			@Html.AntiForgeryToken()
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-			@Html.HiddenFor(m => m.PetId)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Message)
+        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows = 4 })
+        @Html.ValidationMessageFor(model => model.Message)
+    </div>
 
-			<div class="form-group">
-				<label>Reminder Message</label>
-				@Html.TextBoxFor(m => m.Message, new { @class = "form-input" })
-			</div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DueAt)
+        @Html.TextBoxFor(model => model.DueAt, "{0:yyyy-MM-dd HH:mm}", new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(model => model.DueAt)
+    </div>
 
-			<div class="form-group">
-				<label>Reminder Time</label>
-				@Html.TextBoxFor(m => m.DueAt, new
-				{
-					@class = "form-input",
-					type = "datetime-local"
-				})
-			</div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PetId, "Select Pet")
+        @Html.DropDownListFor(model => model.PetId, (SelectList)ViewBag.Pets, "Select a Pet", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PetId)
+    </div>
 
-			<button type="submit" class="register-btn">
-				Save Reminder
-			</button>
-		}
-	</div>
-</div>
+
+    <button type="submit" class="btn btn-primary">Create Reminder</button>
+}

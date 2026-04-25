@@ -48,6 +48,12 @@
 				})
 			</div>
 
+			<!-- Time Zone Dropdown -->
+			 <div class="form-group">
+			 @Html.LabelFor(model => model.TimeZoneId)
+			 @Html.DropDownListFor(model => model.TimeZoneId, new SelectList(ViewBag.TimeZones, "Id", "Name"), "Select Time Zone", new { @class = "form-control" })
+			 </div>
+
 			<button type="submit" class="register-btn">Register</button>
 		}
 

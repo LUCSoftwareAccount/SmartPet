@@ -1,0 +1,26 @@
+﻿
+@{
+	Layout = null;
+}
+
+@model SmartPet.Models.Reminder
+
+@{
+	ViewBag.Title = "Delete Reminder";
+}
+
+<h2>Delete Reminder</h2>
+
+<p>Are you sure you want to delete the following reminder?</p>
+
+<div>
+	<strong>Message:</strong> @Model.message
+	<br />
+	<strong>Due Date:</strong> @Model.dueAt
+</div>
+
+<form action="@Url.Action("Delete", "Reminder", new { id = Model.id })" method="post">
+	@Html.AntiForgeryToken()
+	<button type="submit" class="btn btn-danger">Delete</button>
+	<a href="@Url.Action("Dashboard", "Dashboard")" class="btn btn-default">Cancel</a>
+</form>
