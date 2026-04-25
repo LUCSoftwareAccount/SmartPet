@@ -244,6 +244,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Content Include="css\Landing.css" />
     <Content Include="css\Login.css" />
+    <Content Include="css\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -289,8 +290,8 @@
     <Content Include="Views\Note\Details.cshtml" />
     <Content Include="Views\Note\Edit.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />
-    <None Include="Views\User\Login.cshtml" />
     <None Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -305,7 +306,6 @@
     <Content Include="Views\Home\Landing.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Pet\Delete.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
