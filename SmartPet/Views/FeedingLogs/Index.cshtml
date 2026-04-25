@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SmartPet.Models.FeedingLogs>
+
+@{
+	ViewBag.Title = "Feeding Logs";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Feeding Logs</h2>
+
+<p>
+	@Html.ActionLink("Log New Feeding", "Create", "FeedingLogs", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+	<tr>
+		<th>Pet</th>
+		<th>Brand</th>
+		<th>Food Type</th>
+		<th>Amount</th>
+		<th>Fed At</th>
+		<th>Actions</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.petId</td>
+			<td>@item.brand</td>
+			<td>@item.foodType</td>
+			<td>@item.amount</td>
+			<td>@item.fedAt.ToString("MMM dd, yyyy h:mm tt")</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", "FeedingLogs", new { id = item.id }, null) |
+				@Html.ActionLink("Details", "Details", "FeedingLogs", new { id = item.id }, null) |
+				@Html.ActionLink("Delete", "Delete", "FeedingLogs", new { id = item.id }, null)
+			</td>
+		</tr>
+	}
+</table>

@@ -137,24 +137,41 @@ namespace SmartPet.Controllers
 
 			return View(log);
 		}
-		public ActionResult DownloadPdf(int? petId)
+		public ActionResult DownloadPdf(int petId)
 		{
-			var logs = db.MedicationLogs
-				.Include(m => m.Pet)
-				.AsQueryable();
+			var pet = db.Pets.Find(petId);
 
-			if (petId.HasValue)
+			if (pet == null)
 			{
-				logs = logs.Where(l => l.petId == petId.Value);
+				return HttpNotFound();
 			}
 
-			logs = logs.OrderByDescending(l => l.administeredAt);
-
-			return new Rotativa.ViewAsPdf("MedicationLogsPdf", logs.ToList())
+			var model = new PetReportPdfViewModel
 			{
-				FileName = "MedicationLogs.pdf"
+				Pet = pet,
+
+				MedicationLogs = db.MedicationLogs
+					.Where(m => m.petId == petId)
+					.OrderByDescending(m => m.administeredAt)
+					.ToList(),
+
+				Notes = db.Notes
+					.Where(n => n.petId == petId)
+					.OrderByDescending(n => n.createdAt)
+					.ToList(),
+
+				FeedingLogs = db.FeedingLogs
+					.Where(f => f.petId == petId)
+					.OrderByDescending(f => f.fedAt)
+					.ToList()
+			};
+
+			return new Rotativa.ViewAsPdf("~/Views/MedicationLogs/PetReportPdf.cshtml", model)
+			{
+				FileName = pet.name + "_Pet_Report.pdf"
 			};
 		}
+
 
 
 	}
