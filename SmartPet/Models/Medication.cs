@@ -13,5 +13,6 @@ namespace SmartPet.Models
 		public string dosage { get; set; }
 		public DateTime? startDate { get; set; }
 		public string notes { get; set; }
+		
 	}
 }

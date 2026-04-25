@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedicationLogsController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\PetController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -310,6 +311,11 @@
     <Content Include="Views\Pet\Details.cshtml" />
     <Content Include="Views\Pet\Edit.cshtml" />
     <Content Include="Views\Pet\Index.cshtml" />
+    <Content Include="Views\MedicationLogs\Create.cshtml" />
+    <Content Include="Views\MedicationLogs\Index.cshtml" />
+    <Content Include="Views\MedicationLogs\Delete.cshtml" />
+    <Content Include="Views\MedicationLogs\Details.cshtml" />
+    <Content Include="Views\MedicationLogs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

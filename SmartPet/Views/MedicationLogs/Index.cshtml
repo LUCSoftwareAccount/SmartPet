@@ -1,0 +1,38 @@
+@model IEnumerable<SmartPet.Models.MedicationLogs>
+
+@{
+	ViewBag.Title = "Medication Logs";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Medication Logs</h2>
+
+<p>
+	@Html.ActionLink("Log New Medication", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+	<tr>
+		<th>Pet</th>
+		<th>Medication</th>
+		<th>Amount</th>
+		<th>Administered At</th>
+		<th>Actions</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@(item.Pet != null ? item.Pet.name : "No pet selected")</td>
+			<td>@item.medicationName</td> 
+			<td>@item.amount</td>
+			<td>@item.administeredAt.ToString("MMM dd, yyyy hh:mm tt")</td>
+			<td>
+				@Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+				@Html.ActionLink("Edit", "Edit", new {id = item.id }, new { @class = "btn btn-primary btn-sm" }) 
+				@Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) 
+			</td>
+		</tr>
+	}
+</table>
+
