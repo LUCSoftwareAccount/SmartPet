@@ -39,19 +39,8 @@ namespace SmartPet.Controllers
 			  .Take(5)
 			  .ToList();
 
-			model.RecentMedicationLogs = (
-			  from log in db.MedicationLogs
-			  join med in db.Medications on log.medicationId equals med.id
-			  orderby log.administeredAt descending
-			  select new DashboardMedicationLogItem
-			  {
-				  LogId = log.id,
-				  MedicationName = med.name,
-				  Amount = log.amount,
-				  AdministeredAt = log.administeredAt,
-				  PetId = med.petId
-			  }
-			).Take(5).ToList();
+			
+			ViewBag.MedicationLogs = db.MedicationLogs.ToList();
 
 			return View(model);
 		}

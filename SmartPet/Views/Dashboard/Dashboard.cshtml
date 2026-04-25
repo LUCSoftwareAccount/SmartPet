@@ -56,6 +56,8 @@
 		font-size: 14px;
 		font-weight: bold;
 		transition: 0.2s ease;
+		border: none;
+		cursor: pointer;
 	}
 
 	.action-button-primary {
@@ -256,6 +258,13 @@
 			font-size: 14px;
 		}
 
+	.pet-card-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 12px;
+	}
+
 	@@media (max-width: 1000px) {
 		.main-grid,
 		.pet-grid {
@@ -274,6 +283,7 @@
 		<div class="dashboard-actions">
 			@Html.ActionLink("Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
 			@Html.ActionLink("Add Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
+
 			@using (Html.BeginForm("Logout", "User", FormMethod.Post))
 			{
 				@Html.AntiForgeryToken()
@@ -383,7 +393,10 @@
 		<div class="dashboard-actions">
 			@Html.ActionLink("View Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
 			@Html.ActionLink("Create New Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
-		    @Html.ActionLink("Add Pet", "Create", "Pet", null, new { @class = "action-button action-button-secondary" })
+			@Html.ActionLink("Add Pet", "Create", "Pet", null, new { @class = "action-button action-button-secondary" })
+			@Html.ActionLink("Create Medication Logs", "Create", "MedicationLogs", null, new { @class = "action-button action-button-secondary" })
+			@Html.ActionLink("Create Feeding Log", "Create", "FeedingLogs", null, new { @class = "action-button action-button-secondary" })
+			@Html.ActionLink("View Feeding Logs", "Index", "FeedingLogs", null, new { @class = "action-button action-button-secondary" })
 		</div>
 	</div>
 
@@ -406,17 +419,20 @@
 								<span>🐾</span>
 							}
 						</div>
+
 						<div>
 							<h3>@pet.name</h3>
 							<p>@pet.type</p>
-	          
 						</div>
 					</div>
-					<div style="margin-top: 12px;">
+
+					<div class="pet-card-actions">
 						@Html.ActionLink("Details", "Details", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
-						@Html.ActionLink("Edit", "Edit", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
-						@Html.ActionLink("Delete", "Delete", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
-						@Html.ActionLink("Notes", "Index", "Note", new { petId = pet.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
+						@Html.ActionLink("Edit", "Edit", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Delete", "Delete", "Pet", new { id = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("Notes", "Index", "Note", new { petId = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("View Medication Logs", "Index", "MedicationLogs", new { petId = pet.id }, new { @class = "action-button action-button-secondary" })
+						@Html.ActionLink("View Feeding Logs", "Index", "FeedingLogs", new { petId = pet.id }, new { @class = "action-button action-button-secondary" })
 					</div>
 
 					<ul class="pet-details">

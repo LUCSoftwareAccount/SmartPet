@@ -1,0 +1,28 @@
+@model SmartPet.Models.MedicationLogs
+
+@{
+	ViewBag.Title = "Medication Log Details";
+}
+
+<h2>Medication Log Details</h2>
+
+<div>
+	<hr />
+	<dl class="dl-horizontal">
+
+		<dt>Medication</dt>
+		<dd>@Model.medicationName</dd>
+
+		<dt>Amount</dt>
+		<dd>@Model.amount</dd>
+
+		<dt>Administered At</dt>
+		<dd>@Model.administeredAt.ToString("MMM dd, yyyy hh:mm tt")</dd>
+
+	</dl>
+</div>
+
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-primary" })
+	@Html.ActionLink("Back to Dashboard", "Dashboard", "Dashboard", null, new { @class = "btn btn-secondary" })
+</p>
