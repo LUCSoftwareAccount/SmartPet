@@ -66,3 +66,8 @@
 	max-width: 120px;
 	max-height: 120px;
 }
+
+body {
+	background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+

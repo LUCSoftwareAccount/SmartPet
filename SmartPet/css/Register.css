@@ -1,0 +1,156 @@
+﻿/* Reset & base */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #4facfe, #00f2fe);
+	min-height: 100vh;
+}
+
+/* Page layout */
+.register-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 20px;
+}
+
+/* Card container */
+.register-container {
+	background: #ffffff;
+	padding: 40px 30px;
+	border-radius: 16px;
+	width: 100%;
+	max-width: 420px;
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+	text-align: center;
+}
+
+/* Logo */
+.logo {
+	width: 80px;
+	margin-bottom: 15px;
+}
+
+/* Titles */
+.register-title {
+	font-size: 26px;
+	font-weight: 600;
+	color: #333;
+}
+
+.register-subtitle {
+	font-size: 14px;
+	color: #777;
+	margin-bottom: 25px;
+}
+
+/* Form */
+.register-form {
+	width: 100%;
+}
+
+.form-group {
+	text-align: left;
+	margin-bottom: 18px;
+}
+
+	.form-group label {
+		display: block;
+		font-size: 13px;
+		margin-bottom: 6px;
+		color: #555;
+	}
+
+/* Inputs */
+.form-input {
+	width: 100%;
+	padding: 12px 14px;
+	border-radius: 8px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	transition: all 0.2s ease;
+}
+
+	.form-input:focus {
+		border-color: #4facfe;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+	}
+
+/* Button */
+.register-btn {
+	width: 100%;
+	padding: 12px;
+	background: linear-gradient(135deg, #4facfe, #00c6ff);
+	border: none;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+	.register-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 20px rgba(0, 198, 255, 0.3);
+	}
+
+/* Error message */
+.error-message {
+	color: #e74c3c;
+	font-size: 13px;
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+/* Login text */
+.login-text {
+	margin-top: 20px;
+	font-size: 13px;
+	color: #666;
+}
+
+.login-link {
+	color: #4facfe;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+	.login-link:hover {
+		text-decoration: underline;
+	}
+
+/* Fade-in animation */
+.fade-in {
+	animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(15px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsive tweak */
+@media (max-width: 480px) {
+	.register-container {
+		padding: 30px 20px;
+	}
+
+	.register-title {
+		font-size: 22px;
+	}
+}

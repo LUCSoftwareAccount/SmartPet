@@ -274,6 +274,11 @@
 		<div class="dashboard-actions">
 			@Html.ActionLink("Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
 			@Html.ActionLink("Add Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
+			@using (Html.BeginForm("Logout", "User", FormMethod.Post))
+			{
+				@Html.AntiForgeryToken()
+				<button type="submit" class="action-button action-button-secondary">Logout</button>
+			}
 		</div>
 	</div>
 

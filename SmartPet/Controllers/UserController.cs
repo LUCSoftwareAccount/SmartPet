@@ -120,14 +120,16 @@ namespace SmartPet.Controllers
 
 			var users = await _userRepository.GetAllUsersAsync();
 			var user = users.FirstOrDefault(u => u.email == Email);
+			Debug.WriteLine($"User found: {user?.email}");
+			Debug.WriteLine($"Password found: {user?.passwordHash}");
 
-			if (user == null || user.passwordHash != Password)
-			{
+			if (user == null || user.passwordHash != Password) { 
+
 				ViewBag.Error = "Invalid email or password.";
-				return View();
-			}
+			return View();
+		}
 
-			if (!user.isVerified)
+		        if (!user.isVerified)
 			{
 				ViewBag.Error = "Please verify your email first.";
 				return View();
