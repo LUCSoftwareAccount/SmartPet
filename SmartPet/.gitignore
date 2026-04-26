@@ -1,20 +1,13 @@
- ../../.vs/
-        ../../SmartPet.slnx
-        ../App_Start/
-        ../Content/
-        ../Controllers/
-        ../Global.asax
-        ../Global.asax.cs
-        ../Properties/
-        ../Scripts/
-        ../SmartPet.csproj
-        ../SmartPet.csproj.user
-        ../Views/
-        ../Web.Debug.config
-        ../Web.Release.config
-        ../Web.config
-        ../bin/
-        ../favicon.ico
-        ../obj/
-        ../packages.config
-        ../../packages/
+ .vs/
+ bin/
+obj/
+packages/
+
+*.dll
+*.pdb
+*.cache
+*.user
+*.suo
+
+UpgradeLog*.htm
+SmartPet - Copy/

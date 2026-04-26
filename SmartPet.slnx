@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="SmartPet.Tests/SmartPet.Tests.csproj" Id="6aaeb352-be24-43f9-9aea-93cef8f6e84b" />
   <Project Path="SmartPet/SmartPet.csproj" Id="9fc5a2d2-fbfc-41ba-a43d-8181eda75328" />
 </Solution>

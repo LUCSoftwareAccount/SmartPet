@@ -1,0 +1,163 @@
+@model SmartPet.Models.PetReportPdfViewModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Pet Report</title>
+
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #111827;
+			margin: 30px;
+		}
+
+		h1 {
+			color: #1e3a8a;
+			border-bottom: 2px solid #1e3a8a;
+			padding-bottom: 8px;
+		}
+
+		h2 {
+			margin-top: 25px;
+			color: #1e3a8a;
+		}
+
+		.section {
+			margin-bottom: 25px;
+		}
+
+		.info p {
+			margin: 6px 0;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 10px;
+		}
+
+		th {
+			background-color: #e0e7ff;
+			color: #1e3a8a;
+			text-align: left;
+		}
+
+		th, td {
+			border: 1px solid #cbd5e1;
+			padding: 8px;
+			font-size: 13px;
+		}
+
+		.empty {
+			color: #6b7280;
+			font-style: italic;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>SmartPet Report</h1>
+
+	<div class="section info">
+		<h2>Pet Information</h2>
+
+		<p><strong>Name:</strong> @Model.Pet.name</p>
+		<p><strong>Type:</strong> @Model.Pet.type</p>
+		<p><strong>Breed:</strong> @Model.Pet.breed</p>
+		<p><strong>Gender:</strong> @Model.Pet.gender</p>
+		<p><strong>Weight:</strong> @Model.Pet.weight</p>
+		<p><strong>Birthdate:</strong> @(Model.Pet.Birthdate.HasValue ? Model.Pet.Birthdate.Value.ToString("MMM dd, yyyy") : "N/A")</p>
+		<p><strong>Microchip ID:</strong> @Model.Pet.microchipId</p>
+	</div>
+
+	<div class="section">
+		<h2>Medication Logs</h2>
+
+		@if (Model.MedicationLogs.Any())
+		{
+			<table>
+				<tr>
+					<th>Medication</th>
+					<th>Amount</th>
+					<th>Administered At</th>
+				</tr>
+
+				@foreach (var log in Model.MedicationLogs)
+				{
+					<tr>
+						<td>@log.medicationName</td>
+						<td>@log.amount</td>
+						<td>@log.administeredAt.ToString("MMM dd, yyyy h:mm tt")</td>
+					</tr>
+				}
+			</table>
+		}
+		else
+		{
+			<p class="empty">No medication logs found for this pet.</p>
+		}
+	</div>
+
+	<div class="section">
+		<h2>Feeding Logs</h2>
+
+		@if (Model.FeedingLogs.Any())
+		{
+			<table>
+				<tr>
+					<th>Food</th>
+					<th>Amount</th>
+					<th>Feeding Time</th>
+				</tr>
+
+				@foreach (var feed in Model.FeedingLogs)
+				{
+					<tr>
+						<td>@feed.foodType</td>
+						<td>@feed.amount</td>
+						<td>@feed.fedAt.ToString("MMM dd, yyyy h:mm tt")</td>
+					</tr>
+				}
+			</table>
+		}
+		else
+		{
+			<p class="empty">No feeding logs found for this pet.</p>
+		}
+	</div>
+
+	<div class="section">
+		<h2>Notes</h2>
+
+		@if (Model.Notes.Any())
+		{
+			<table>
+				<tr>
+					<th>Note</th>
+					<th>Created At</th>
+				</tr>
+
+				@foreach (var note in Model.Notes)
+				{
+					<tr>
+						<td>@note.content</td>
+						<td>@note.createdAt.ToString("MMM dd, yyyy")</td>
+					</tr>
+				}
+			</table>
+		}
+		else
+		{
+			<p class="empty">No notes found for this pet.</p>
+		}
+	</div>
+
+</body>
+</html>

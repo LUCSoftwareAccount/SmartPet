@@ -1,0 +1,31 @@
+@model IEnumerable<SmartPet.Models.Pet>
+
+<h2>Pets</h2>
+
+<p>
+	@Html.ActionLink("Create New Pet", "Create")
+</p>
+
+<table class="table">
+	<tr>
+		<th>Type</th>
+		<th>Microchip</th>
+		<th>Birthdate</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.type</td>
+			<td>@item.microchipId</td>
+			<td>@item.Birthdate</td> 
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+				@Html.ActionLink("Details", "Details", new { id = item.id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.id })
+				@Html.ActionLink("Notes", "Index", "Note", new { petID = item.id }, null)
+			</td>
+		</tr>
+	}
+</table>
