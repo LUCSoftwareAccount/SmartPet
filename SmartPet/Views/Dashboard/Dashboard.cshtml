@@ -284,14 +284,11 @@
 		</div>
 
 		<div class="dashboard-actions">
-			@Html.ActionLink("Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
-			@Html.ActionLink("Add Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
-
 			@using (Html.BeginForm("Logout", "User", FormMethod.Post))
 			{
 				@Html.AntiForgeryToken()
 				<button type="submit" class="action-button action-button-secondary">Logout</button>
-			}
+			}	
 		</div>
 	</div>
 
@@ -374,10 +371,15 @@
 					@foreach (var reminder in Model.UpcomingReminders)
 					{
 						<div class="item-box">
-							<h4>@reminder.reminderType</h4>
 							<p>@reminder.message</p>
 							<span class="tag tag-purple">@reminder.dueAt.ToString("MMM dd, yyyy h:mm tt")</span>
 						</div>
+
+						<!-- Edit and Delete Buttons for Reminders -->
+                    <div style="margin-top: 12px;">
+                        @Html.ActionLink("Edit", "Edit", "Reminder", new { id = reminder.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
+                        @Html.ActionLink("Delete", "Delete", "Reminder", new { id = reminder.id }, new { @class = "action-button action-button-secondary", style = "margin-left: 8px;" })
+                    </div>
 					}
 				</div>
 			}
@@ -397,10 +399,17 @@
 		<div class="dashboard-actions">
 			@Html.ActionLink("View Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
 			@Html.ActionLink("Create New Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
-			@Html.ActionLink("Add Pet", "Create", "Pet", null, new { @class = "action-button action-button-secondary" })
-			@Html.ActionLink("Create Medication Logs", "Create", "MedicationLogs", null, new { @class = "action-button action-button-secondary" })
-			@Html.ActionLink("Create Feeding Log", "Create", "FeedingLogs", null, new { @class = "action-button action-button-secondary" })
-			@Html.ActionLink("View Feeding Logs", "Index", "FeedingLogs", null, new { @class = "action-button action-button-secondary" })
+		    @Html.ActionLink("Add Pet", "Create", "Pet", null, new { @class = "action-button action-button-secondary" })
+							<div>
+
+		@Html.ActionLink(
+"Add Reminder",
+"Create",
+"Reminder",
+null,
+new { @class = "action-button action-button-secondary" }
+		)
+	</div>
 		</div>
 	</div>
 

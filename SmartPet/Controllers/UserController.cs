@@ -47,6 +47,10 @@ namespace SmartPet.Controllers
 		// GET: User/Registration
 		public ActionResult Registration()
 		{
+			// Get the list of time zones
+			var timeZones = TimeZoneInfo.GetSystemTimeZones();
+			ViewBag.TimeZones = timeZones.Select(tz => new { Id = tz.Id, Name = tz.DisplayName }).ToList();
+
 			return View();
 		}
 
@@ -66,7 +70,7 @@ namespace SmartPet.Controllers
 		// POST: User/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Edit(int id, [Bind(Include = "id,username,email,passwordHash,enabled,isVerified")] User user)
+		public async Task<ActionResult> Edit(int id, [Bind(Include = "id,username,email,passwordHash,enabled,isVerified, TimeZoneId")] User user)
 		{
 			if (id != user.id)
 			{
@@ -120,8 +124,6 @@ namespace SmartPet.Controllers
 
 			var users = await _userRepository.GetAllUsersAsync();
 			var user = users.FirstOrDefault(u => u.email == Email);
-			Debug.WriteLine($"User found: {user?.email}");
-			Debug.WriteLine($"Password found: {user?.passwordHash}");
 
 			if (user == null || user.passwordHash != Password) { 
 
@@ -161,7 +163,7 @@ namespace SmartPet.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Registration([Bind(Include = "username,email,passwordHash")] User user)
+		public async Task<ActionResult> Registration([Bind(Include = "username,email,passwordHash,TimeZoneId")] User user)
 		{
 			if (ModelState.IsValid)
 			{

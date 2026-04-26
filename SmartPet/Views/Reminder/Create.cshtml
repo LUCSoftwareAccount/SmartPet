@@ -1,0 +1,33 @@
+﻿@model SmartPet.Models.ReminderViewModel
+
+@{
+    ViewBag.Title = "Create Reminder";
+}
+
+<h2>Create Reminder</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Message)
+        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows = 4 })
+        @Html.ValidationMessageFor(model => model.Message)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DueAt)
+        @Html.TextBoxFor(model => model.DueAt, "{0:yyyy-MM-dd HH:mm}", new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(model => model.DueAt)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PetId, "Select Pet")
+        @Html.DropDownListFor(model => model.PetId, (SelectList)ViewBag.Pets, "Select a Pet", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PetId)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Create Reminder</button>
+}

@@ -15,6 +15,9 @@ namespace SmartPet.Models
 			public bool isVerified { get; set; }
 			public String VerificationToken { get; set; }
 		    public DateTime TokenExpires { get; set; }
-		
+			public string TimeZoneId { get; set; } 
+
+
+
 	}
 }

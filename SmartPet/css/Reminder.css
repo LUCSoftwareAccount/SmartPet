@@ -1,0 +1,96 @@
+﻿/* Page layout */
+.register-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 80vh;
+	padding: 30px;
+	background: linear-gradient(135deg, #eef2ff, #f8fbff);
+}
+
+/* Card container */
+.register-container {
+	width: 100%;
+	max-width: 420px;
+	background: #ffffff;
+	padding: 35px 30px;
+	border-radius: 16px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	text-align: center;
+}
+
+	/* Title */
+	.register-container h2 {
+		font-size: 22px;
+		margin-bottom: 20px;
+		color: #1e3a8a;
+		font-weight: 600;
+	}
+
+/* Form groups */
+.form-group {
+	text-align: left;
+	margin-bottom: 18px;
+}
+
+	.form-group label {
+		display: block;
+		font-size: 13px;
+		margin-bottom: 6px;
+		color: #374151;
+		font-weight: 500;
+	}
+
+/* Inputs */
+.form-input {
+	width: 100%;
+	padding: 12px 14px;
+	border-radius: 10px;
+	border: 1px solid #d1d5db;
+	font-size: 14px;
+	transition: all 0.2s ease;
+	background: #fff;
+}
+
+	/* Focus effect */
+	.form-input:focus {
+		outline: none;
+		border-color: #2563eb;
+		box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+	}
+
+/* Datetime input fix (important) */
+input[type="datetime-local"] {
+	color: #374151;
+}
+
+/* Button */
+.register-btn {
+	width: 100%;
+	padding: 12px;
+	background: linear-gradient(135deg, #2563eb, #1d4ed8);
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.25s ease;
+	margin-top: 10px;
+}
+
+	.register-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+	}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+	.register-container {
+		padding: 25px 18px;
+	}
+
+		.register-container h2 {
+			font-size: 20px;
+		}
+}
