@@ -1,9 +1,14 @@
 ﻿@model IEnumerable<SmartPet.Models.Note>
 
+@{
+	ViewBag.Title = "Notes";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h2>Notes for @ViewBag.PetName</h2>
 
 <p>
-	@Html.ActionLink("Create New Note", "Create", new { petId = ViewBag.PetId })
+	@Html.ActionLink("Create New Note", "Create", new { petId = ViewBag.PetId }, new { @class = "btn btn-primary" })
 </p>
 
 <table class="table">
@@ -11,7 +16,7 @@
 		<th>Content</th>
 		<th>Created At</th>
 		<th>Updated At</th>
-		<th></th>
+		<th>Actions</th>
 	</tr>
 
 	@foreach (var item in Model)
@@ -21,16 +26,15 @@
 			<td>@item.createdAt.ToString("yyyy-MM-dd HH:mm")</td>
 			<td>@(item.updateAt.HasValue ? item.updateAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
 			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-				@Html.ActionLink("Details", "Details", new { id = item.id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.id }) |
-				
+				@Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+				@Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-primary btn-sm" })
+				@Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
 			</td>
 		</tr>
 	}
 </table>
 
 <p>
-	@Html.ActionLink("Back to Pets", "Index", "Pet")
+	@Html.ActionLink("Back to Pets", "Index", "Pet", null, new { @class = "btn btn-default" })
 </p>
 

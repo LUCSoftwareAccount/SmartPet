@@ -24,13 +24,13 @@
 	{
 		<tr>
 			<td>@(item.Pet != null ? item.Pet.name : "No pet selected")</td>
-			<td>@item.medicationName</td> 
+			<td>@item.medicationName</td>
 			<td>@item.amount</td>
 			<td>@item.administeredAt.ToString("MMM dd, yyyy hh:mm tt")</td>
 			<td>
 				@Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
-				@Html.ActionLink("Edit", "Edit", new {id = item.id }, new { @class = "btn btn-primary btn-sm" }) 
-				@Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) 
+				@Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" })
+				@Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
 			</td>
 		</tr>
 	}

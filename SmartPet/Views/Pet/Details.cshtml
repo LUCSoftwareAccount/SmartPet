@@ -1,20 +1,36 @@
 @model SmartPet.Models.Pet
 
+@{
+	ViewBag.Title = "Pet Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h2>Pet Details</h2>
 
-<div>
-	<hr />
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Microchip</th>
+		<th>Birthdate</th>
+		<th>Breed</th>
+		<th>Gender</th>
+		<th>Weight</th>
+		<th>Actions</th>
+	</tr>
+	<tr>
+		<td>@Model.name</td>
+		<td>@Model.type</td>
+		<td>@Model.microchipId</td>
+		<td>@(Model.Birthdate?.ToString("yyyy-MM-dd"))</td>
+		<td>@Model.breed</td>
+		<td>@Model.gender</td>
+		<td>@Model.weight</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-info btn-sm" })
+			@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default btn-sm" })
+		</td>
+	</tr>
+</table>
 
-	<p><strong>Name:</strong> @Model.name</p>
-	<p><strong>Type:</strong> @Model.type</p>
-	<p><strong>Microchip:</strong> @Model.microchipId</p>
-	<p><strong>Birthdate:</strong> @(Model.Birthdate?.ToString("yyyy-MM-dd"))</p>
-	<p><strong>Breed:</strong> @Model.breed</p>
-	<p><strong>Gender:</strong> @Model.gender</p>
-	<p><strong>Weight:</strong> @Model.weight</p>
 
-</div>
-
-<br />
-@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-@Html.ActionLink("Back to List", "Index") 

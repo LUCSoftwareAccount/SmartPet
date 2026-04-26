@@ -1,47 +1,50 @@
 ﻿@{
 	ViewData["Title"] = "Login";
+	Layout = "";
 }
 
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" href=" /css/Login.css" />
+<link rel="stylesheet" href="/css/Login.css" />
 
 <div class="login-form-container">
 
 	<img src="~/images/SmartPet_png.png"
-		      alt="SmartPet logo"
-			  class="img"/>
+		 alt="SmartPet logo"
+		 class="img" />
 
 	<h1 class="login-title">Login to SmartPet</h1>
 
 	@if (ViewBag.Error != null)
 	{
-		<p>@ViewBag.Error</p>
+		<p style="color:red;">@ViewBag.Error</p>
 	}
 
-    <form action="/User/Login" method="post" class="login-form">
-	    @Html.AntiForgeryToken()
+	<form action="/User/Login" method="post" class="login-form">
+		@Html.AntiForgeryToken()
 
-	    <label>Email</label>
-	    <input type="text"
-		       id="email"
-		       name="Email"
-		       placeholder="Enter your email" />
+		<label>Email</label>
+		<input type="text"
+			   id="email"
+			   name="Email"
+			   placeholder="Enter your email" />
 
-	    <label>Password</label>
-	    <input type="password"
-		       id="password"
-		       name="Password"
-		       placeholder="Enter your password" />
+		<label>Password</label>
+		<input type="password"
+			   id="password"
+			   name="Password"
+			   placeholder="Enter your password" />
 
-	    <button type="submit" class="login-btn">Login</button>
-    </form>
+		<button type="submit" class="login-btn">Login</button>
+	</form>
 
 	<p>
-		Don’t have an account?
-		<a asp-controller="User" asp-action="Registration" > Register here</a>
+		Don't have an account?
+		@Html.ActionLink("Register here", "Registration", "User")
 	</p>
 
 </div>
+
+</html>
 

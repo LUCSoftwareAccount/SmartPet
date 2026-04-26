@@ -1,9 +1,14 @@
 @model IEnumerable<SmartPet.Models.Pet>
 
+@{
+	ViewBag.Title = "Pets";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h2>Pets</h2>
 
 <p>
-	@Html.ActionLink("Create New Pet", "Create")
+	@Html.ActionLink("Create New Pet", "Create", null, new { @class = "btn btn-primary" })
 </p>
 
 <table class="table">
@@ -11,7 +16,7 @@
 		<th>Type</th>
 		<th>Microchip</th>
 		<th>Birthdate</th>
-		<th></th>
+		<th>Actions</th>
 	</tr>
 
 	@foreach (var item in Model)
@@ -19,12 +24,12 @@
 		<tr>
 			<td>@item.type</td>
 			<td>@item.microchipId</td>
-			<td>@item.Birthdate</td> 
+			<td>@item.Birthdate</td>
 			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-				@Html.ActionLink("Details", "Details", new { id = item.id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.id })
-				@Html.ActionLink("Notes", "Index", "Note", new { petID = item.id }, null)
+				@Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+				@Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-primary btn-sm" })
+				@Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+				@Html.ActionLink("Notes", "Index", "Note", new { petID = item.id }, new { @class = "btn btn-warning btn-sm" })
 			</td>
 		</tr>
 	}

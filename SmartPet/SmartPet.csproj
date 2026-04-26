@@ -59,7 +59,6 @@
       <HintPath>..\packages\Hangfire.SqlServer.1.8.23\lib\net451\Hangfire.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
     </Reference>
@@ -71,7 +70,6 @@
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -165,11 +163,8 @@
     <Compile Include="Models\MedicationLogs.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Pet.cs" />
-
     <Compile Include="Models\PetReportPdfViewModel.cs" />
-
     <Compile Include="Models\RegistrationViewModel.cs" />
-
     <Compile Include="Models\Reminder.cs" />
     <Compile Include="Models\ReminderViewModel.cs" />
     <Compile Include="Models\ReportRequest.cs" />
@@ -330,7 +325,6 @@
     <Content Include="Views\Reminder\Create.cshtml" />
     <Content Include="Views\Reminder\Edit.cshtml" />
     <Content Include="Views\Reminder\Delete.cshtml" />
-    <None Include="Views\User\Login.cshtml" />
     <None Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Web.config" />
