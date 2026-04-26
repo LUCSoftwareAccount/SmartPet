@@ -1,30 +1,102 @@
 ﻿@model SmartPet.Models.FeedingLogs
 
-<h2>Add Feeding Log</h2>
-
-@using (Html.BeginForm())
-{
-	<div>
-		<label>Brand</label>
-		@Html.TextBoxFor(m => m.brand)
-	</div>
-
-	<div>
-		<label>Food Type</label>
-		@Html.TextBoxFor(m => m.foodType)
-	</div>
-
-	<div>
-		<label>Amount</label>
-		@Html.TextBoxFor(m => m.amount)
-	</div>
-
-	<div>
-		<label>Pet ID</label>
-		@Html.TextBoxFor(m => m.petId)
-	</div>
-
-	<br />
-
-	<button type="submit">Save</button>
+@{
+	ViewBag.Title = "Create Feeding Log";
 }
+
+<div class="feeding-container">
+	<h2>Create Feeding Log</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.brand, "Brand")
+			@Html.TextBoxFor(model => model.brand, new { @class = "form-control", placeholder = "Enter brand name" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.foodType, "Food Type")
+			@Html.TextBoxFor(model => model.foodType, new { @class = "form-control", placeholder = "Enter food type" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.amount, "Amount")
+			@Html.TextBoxFor(model => model.amount, new { @class = "form-control", placeholder = "Enter amount" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.fedAt, "Fed At")
+			@Html.TextBoxFor(model => model.fedAt, new { @class = "form-control", type = "datetime-local" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.petId, "Pet ID")
+			@Html.TextBoxFor(model => model.petId, new { @class = "form-control", placeholder = "Enter pet ID" })
+		</div>
+
+		<button type="submit" class="btn-save">Save Feeding Log</button>
+	}
+</div>
+
+<style>
+	.feeding-container {
+		max-width: 600px;
+		margin: 40px auto;
+		background: white;
+		padding: 35px;
+		border-radius: 20px;
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+		font-family: Arial, sans-serif;
+	}
+
+		.feeding-container h2 {
+			font-size: 32px;
+			font-weight: 700;
+			margin-bottom: 25px;
+			color: #111827;
+		}
+
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+		.form-group label {
+			display: block;
+			font-weight: 600;
+			margin-bottom: 8px;
+			color: #1f2937;
+		}
+
+	.form-control {
+		width: 100%;
+		padding: 13px 15px;
+		border: 1px solid #d1d5db;
+		border-radius: 12px;
+		font-size: 16px;
+		box-sizing: border-box;
+	}
+
+		.form-control:focus {
+			outline: none;
+			border-color: #2563eb;
+			box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+		}
+
+	.btn-save {
+		background-color: #2563eb;
+		color: white;
+		border: none;
+		padding: 13px 22px;
+		border-radius: 14px;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		margin-top: 10px;
+	}
+
+		.btn-save:hover {
+			background-color: #1d4ed8;
+		}
+</style>
