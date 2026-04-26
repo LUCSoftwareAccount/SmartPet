@@ -1,0 +1,35 @@
+﻿@{
+	ViewData["Title"] = "Landing";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Link your stylesheet -->
+<link rel="stylesheet" href=" \css\Landing.css" />
+
+<div class="body-container">
+	<div class="content fade-in">
+
+		<img src="~/images/SmartPet_png.png"
+			 alt="Petnote Logo"
+			 class="logo" />
+
+		<h1 class="title">Welcome to SmartPet!</h1>
+		<p class="subtitle">We're so glad you're here.</p>
+
+		<div class="button-group">
+			<a @Html.ActionLink("Login", "Login", "User", null, new { @class = "login-btn" })
+
+			</a>
+
+			<a @Html.ActionLink("Register", "Registration", "User", null, new { @class = "register-btn" })
+
+				</a>
+		</div>
+	</div>
+
+	<img src="~/images/running-dog.gif"
+		 alt="Running Dog"
+		 class="running-dog" />
+</div>

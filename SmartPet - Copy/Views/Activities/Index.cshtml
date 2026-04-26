@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmartPet.Models.Activity>
+
+@{
+	ViewBag.Title = "Activities Log";
+}
+
+<h2>Activities Log</h2>
+
+<p>
+	@Html.ActionLink("Add New Activity", "Create", "Activities", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>Pet</th>
+		<th>Activity</th>
+		<th>Date</th>
+		<th>Completed</th>
+		<th>Created At</th>
+	</tr>
+
+	@if (Model != null && Model.Any())
+	{
+		foreach (var item in Model)
+		{
+			<tr>
+				<td>@(item.Pet != null ? item.Pet.name : "No Pet")</td>
+				<td>@item.activityName</td>
+				<td>@item.activityDate.ToString("MM/dd/yyyy hh:mm tt")</td>
+				<td>@item.completed</td>
+				<td>@item.createdAt.ToString("MM/dd/yyyy hh:mm tt")</td>
+			</tr>
+		}
+	}
+	else
+	{
+		<tr>
+			<td colspan="5">No activities logged yet.</td>
+		</tr>
+	}
+</table>

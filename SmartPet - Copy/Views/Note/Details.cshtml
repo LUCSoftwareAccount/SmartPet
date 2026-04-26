@@ -1,0 +1,16 @@
+﻿@model SmartPet.Models.Note
+
+<h2>Note Details</h2>
+
+<div>
+	<hr />
+	<p><strong>Content:</strong> @Model.content</p>
+	<p><strong>Created At:</strong> @Model.createdAt.ToString("yyyy-MM-dd HH:mm")</p>
+	<p><strong>Updated At:</strong> @(Model.updateAt.HasValue ? Model.updateAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</p>
+</div>
+
+<br />
+
+@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+@Html.ActionLink("Back to List", "Index", new { petId = Model.petId }) 
+
