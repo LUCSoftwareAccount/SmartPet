@@ -400,19 +400,11 @@
 			@Html.ActionLink("View Activities Log", "Index", "Activities", null, new { @class = "action-button action-button-primary" })
 			@Html.ActionLink("Create New Activity", "Create", "Activities", null, new { @class = "action-button action-button-secondary" })
 		    @Html.ActionLink("Add Pet", "Create", "Pet", null, new { @class = "action-button action-button-secondary" })
-							<div>
-
-		@Html.ActionLink(
-"Add Reminder",
-"Create",
-"Reminder",
-null,
-new { @class = "action-button action-button-secondary" }
-		)
-	</div>
+			@Html.ActionLink("Add Medication Logs", "Create", "MedicationLogs", null, new { @class = "action-button action-button-secondary" })  
+			@Html.ActionLink("Add Reminder", "Create", "Reminder", null, new { @class = "action-button action-button-secondary" })
 		</div>
 	</div>
-
+	
 	<h2 class="section-title" style="margin-bottom: 15px;">Summary of Each Pet’s Record</h2>
 
 	@if (Model.Pets.Any())
